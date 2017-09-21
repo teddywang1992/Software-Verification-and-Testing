@@ -57,7 +57,7 @@ public interface ISocialNetwork {
 	public Collection<String> recommendFriends() throws NoUserLoggedInException, UserNotFoundException;
 	
 	// Leave the social network and cease to exist to other members
-	public void leave() throws NoUserLoggedInException; 
+	public void leave() throws NoUserLoggedInException;
 		
 	// No other public methods are allowed in ISocialNetwork implementations 
 

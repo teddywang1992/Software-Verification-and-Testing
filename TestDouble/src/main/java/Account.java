@@ -70,6 +70,7 @@ public class Account implements Cloneable {
 	public void requestFriendship(Account fromMember) {
 		if (this.blocked.contains(fromMember)) return;
 		incomingRequests.add(fromMember.getUserName());
+//		System.out.println(incomingRequests);
 		fromMember.getOutgoingRequests().add(this.getUserName());
 		if (autoAccept) {
 			fromMember.friendshipAccepted(this);

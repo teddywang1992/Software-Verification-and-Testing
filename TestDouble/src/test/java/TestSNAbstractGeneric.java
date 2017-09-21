@@ -1,12 +1,13 @@
-import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
 
 public abstract class TestSNAbstractGeneric {
@@ -18,6 +19,33 @@ public abstract class TestSNAbstractGeneric {
 
 	@Before
 	public void setUp() throws Exception {
+		if (DAOFactory.isMock(accountDAO)) {
+			sn = new SocialNetwork(accountDAO);
+			when(accountDAO.findByUserName("John")).thenReturn(null);
+			when(accountDAO.findByUserName("Hakan")).thenReturn(null);
+			when(accountDAO.findByUserName("Serra")).thenReturn(null);
+			when(accountDAO.findByUserName("Dean")).thenReturn(null);
+			when(accountDAO.findByUserName("Hasan")).thenReturn(null);
+			m1 = sn.join("John");
+			m2 = sn.join("Hakan");
+			m3 = sn.join("Serra");
+			m4 = sn.join("Dean");
+			m5 = sn.join("Hasan");
+			Set<Account> set = new HashSet<Account>();
+			set.add(m1);
+			set.add(m2);
+			set.add(m3);
+			set.add(m4);
+			set.add(m5);
+			when(accountDAO.findByUserName("John")).thenReturn(m1);
+			when(accountDAO.findByUserName("Hakan")).thenReturn(m2);
+			when(accountDAO.findByUserName("Serra")).thenReturn(m3);
+			when(accountDAO.findByUserName("Dean")).thenReturn(m4);
+			when(accountDAO.findByUserName("Hasan")).thenReturn(m5);
+			when(accountDAO.findAll()).thenReturn(set);
+			return;
+		}
+
 		m1 = sn.join("John");
 		m2 = sn.join("Hakan");
 		m3 = sn.join("Serra");
@@ -53,7 +81,7 @@ public abstract class TestSNAbstractGeneric {
 	 */
 	
 	@Test
-	public void canJoinSocialNetwork() throws UserExistsException {
+	public void canJoinSocialNetwork() throws UserExistsException{
 		Account newMember = sn.join("Gloria");
 		assertEquals("Gloria", newMember.getUserName());
 	}

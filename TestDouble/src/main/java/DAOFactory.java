@@ -1,4 +1,3 @@
-import static org.mockito.Mockito.mock;
 
 
 public class DAOFactory {
@@ -30,13 +29,17 @@ public class DAOFactory {
 		/* this one returns a MockitoMock object, which can be used as a test double
 		 that is custom configured in the tests 
 		 */
-		return mock(IAccountDAO.class);
+		//return mock(IAccountDAO.class);
+		return null;
 	}
-	
+
 	public static boolean isMock (IAccountDAO dao) {
 		/*
 		 *  with this method, you can check whether an IAccountDAO object is a mock object
 		 */
+//		System.out.println("accountfaje : " + (dao instanceof AccountDAOFake));
+//		System.out.println("accountdao : " + (dao instanceof AccountDAO));
+		//return !(dao instanceof AccountDAOFake);
 		return !(dao instanceof AccountDAOFake) && !(dao instanceof AccountDAO);
 	}
 
