@@ -1,0 +1,31 @@
+ASSIGNMENT REPORT - TEST DOUBLES
+
+Name: Yanxing Wang
+Andrew ID: yanxingw
+
+1. Why were test doubles necessary in this assignment?
+A test double is an object that can stand in for a real object in a test.
+In this assignment we cannot use the real database and we are not supposed to use it.
+
+2. What were the advantages and disadvantages of the different kinds of test doubles
+you used? Did you observe any differences in their ability to reveal faults? Did they behave differently?
+
+Fake
+Pros: Sometimes stubs are not enough, and we need more realistic behavior.
+Cons: We need to fake a real class and implement the logic in it. Sometime it is complex.
+
+Mock:
+Pros: We don't need to know the logic inside the class. We can just easily make the stub and use it.
+Cons: It is really hard when we test a complex situation. For this assignment when we mock the real
+behavior we need to make it very complex for example when we use mock to test the
+
+3. List the faults found in the production or test code.
+
+In social network class change the update method to delete method.
+
+// use a bullet list, be specific, referring to broken test and associated method
+
+
+/** This report should not exceed one page. **/
+
+1. In SocialNetwork class leave method. We change the update method to delete method.
